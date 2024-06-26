@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="description"
+        content="Solving Programming by Example problems by LLMs">
+  <meta name="keywords" content="Nerfies, D-NeRF, NeRF">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Is Programming by Example solved by LLMs?</title>
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-9W8HF50Z2C"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+
+      gtag('config', 'G-9W8HF50Z2C');
+    </script>
+
+  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet">
+
+  <link rel="stylesheet" href="./static/css/bulma.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
+  <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
+  <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
+  <link rel="stylesheet"
+        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="./static/css/index.css">
+<link rel="icon" href = "https://images.emojiterra.com/google/noto-emoji/unicode-15/color/1024px/1f9d1-1f4bb.png">
+
+
+  <!-- <link rel="icon" href="./static/images/favicon.svg"> -->
+
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script defer src="./static/js/fontawesome.all.min.js"></script>
+  <script src="./static/js/bulma-carousel.min.js"></script>
+  <script src="./static/js/bulma-slider.min.js"></script>
+  <script src="./static/js/index.js"></script>
+</head>
+<body>
+
+<section class="hero">
+  <div class="hero-body">
+    <div class="container is-max-desktop">
+      <div class="columns is-centered">
+        <div class="column has-text-centered">
+          <h1 class="title is-1 publication-title">Is Programming by Example solved by LLMs?</h1>
+          <div class="is-size-5 publication-authors">
+            <span class="author-block">
+              <a href="https://wending.dev">Wen-Ding Li</a><sup>1</sup>,</span>
+            <span class="author-block">
+              <a href="https://www.cs.cornell.edu/~ellisk/">Kevin Ellis</a><sup>1</sup></span>
+          </div>
+
+          <div class="is-size-5 publication-authors">
+            <span class="author-block"><sup>1</sup>Cornell University</span>
+          </div>
+
+          <div class="column has-text-centered">
+            <div class="publication-links">
+              <!-- PDF Link. -->
+              <span class="link-block">
+                <a href="https://arxiv.org/abs/2406.08316"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fas fa-file-pdf"></i>
+                  </span>
+                  <span>Read the Paper!</span>
+                </a>
+              </span>
+              <!-- Code Link. -->
+              <span class="link-block">
+                <a href="https://huggingface.co/spaces/xu3kev/llm_visual_program_sythensis"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span>🤗 Try the Visual Program Synthesis Demo!</span>
+                  </a>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="hero teaser">
+  <div class="container is-max-desktop">
+    <div class="hero-body">
+      <img id="teaser" src="./static/images/pbedomains.png" alt="Teaser image.">
+      <h2 class="subtitle has-text-centered">
+        We study three domains of programming-by-example tasks: two standard tasks resembling programs found in pretraining data, and one less common graphics domain that is likely underrepresented in LLM pretraining data.
+      </h2>
+    </div>
+  </div>
+</section>
+
+
+<section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+  <div class="container is-max-desktop">
+    <!-- Abstract. -->
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-full">
+        <h2 class="title is-3">Abstract</h2>
+        <div class="content has-text-justified" style="font-size: 120%;">
+          <p>
+Programming-by-Examples (PBE) aims to generate an algorithm from input-output examples. Such systems are practically and theoretically important: from an
+end-user perspective, they are deployed to millions of people, and from an AI perspective, PBE corresponds to a very general form of few-shot inductive inference.  Given the success of Large Language Models (LLMs) in code-generation tasks, we
+investigate here the extent to which LLMs can be said to have 'solved' PBE. 
+</p>
+<p>
+We experiment on classic domains such as lists and strings, and an uncommon graphics
+programming domain not well represented in typical pretraining data. We find that pretrained models are not effective at PBE, but that they can be fine-tuned for much
+higher performance, provided the test problems are in-distribution. We analyze empirically what causes these models to succeed and fail, and take steps toward
+understanding how to achieve better out-of-distribution generalization. Collectively these results suggest that LLMs make strong progress toward solving the typical
+suite of PBE tasks, potentially increasing the flexibility and applicability of PBE systems, while also identifying ways in which LLMs still fall short.
+          </p>
+        </div>
+      </div>
+    </div>
+    <!--/ Abstract. -->
+    <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <h2 class="title is-3">LLMs for Programming-by-Example (PBE)</h2>
+            <div class="content has-text-justified" style="font-size: 120%;">
+              <p>
+                Programming-by-Example (PBE) is a code generation problem that has been intensively studied in the program synthesis community over the last few decades. Given input-output examples (i.e., test cases), the goal is to generate a program that can pass those examples. We explore the use of Large Language Models (LLMs) for PBE and find that LLMs can be fine-tuned to achieve state-of-the-art performance in PBE tasks.
+  <ul>
+    <li><strong>Synthetic Data Generation</strong>: To create a dataset of (example test cases, function) pairs, we generate synthetic data by prompting the LLMs with seed problems. We then execute and filter the results and correct the test cases, ensuring that the test cases and functions are aligned.</li>
+    <li><strong>Test Time Compute</strong>: For PBE, the examples, i.e., test cases, are given as input. We can draw multiple program samples from the LLMs and filter them by checking against the given test cases. The system can then samples lots of candidate programs and only output one pass programs for the user.</li>
+  </ul>
+              </p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <h2 class="title is-3">Experiment Results</h2>
+            <div class="content has-text-justified" style="font-size: 120%;">
+              <img src="./static/images/pbe_results.png" width="100%"/>
+              <p>
+                We apply our method into three programming-by-example domains:
+                <ul>
+                  <li><strong>Lists</strong>: List functions is a PBE domain meant to model a “programmer’s assistant”. It concerns discovering algorithms that transform lists of numbers, given input-output examples. This
+                    problem statement has a long history within program synthesis, and was popularized within machine learning by DeepCoder.</li>
+                  <li><strong>Strings</strong>: Text editing is a domain where a program synthesizer assists an end-user edit their spreadsheets or other documents. From string-to-string examples, the system generates edit
+                    macros for tasks such as reformatting dates, extracting fields from semistructured text.</li>
+                  <li><strong>Graphics</strong>: LOGO/Turtle graphics is a domain whose goal is to synthesize a program that generates a target image. Systems of this kind can be used both for high-level visual reasoning and
+                    for helping artists make structured edits to images. We use a dataset of geometric designs expressed as LOGO/Turtle programs—where the programs move a simulated
+                    pen over a canvas—taken from Dreamcoder and Regal</li>
+                </ul>
+                In all three domains, our finetune models achieve state of the art performance.
+              </p>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <h2 class="title is-3">Program with Python instead of DSL</h2>
+            <div class="content has-text-justified" style="font-size: 120%;">
+              <p>
+                Traditional approaches to programming-by-example use domain-specific programming languages designed to enable efficient search and/or bias the system toward target functions. Although using DSLs allows for more efficient search, they have the shortcoming of not being able to cover all types of problems from users. We find that by using Python, the resulting system can cover a broader scope of problems than classic symbolic methods.
+              </p>
+              <img src="./static/images/python_pbe.png" width="100%"/>
+            <div class="content has-text-justified" style="font-size: 80%;">
+              <p>
+                PBE with LLMs allows using general-purpose programming languages which can mix string and numerical operations in ways not allowed by domain-specific languages (top), and allows world knowledge to inform code generation (bottom). I/Os and code partly elided for space
+              </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+    <section class="section" style="margin-bottom: 0; padding-bottom: 0;">
+      <div class="container is-max-desktop">
+        <div class="columns is-centered has-text-centered">
+          <div class="column is-full">
+            <h2 class="title is-3">Out of Distribution Problems and Adaptation</h2>
+            <div class="content has-text-justified" style="font-size: 120%;">
+              <p>
+              However, the traditional symbolic search approach argubly has the advantage of being able to generalize to out-of-distribution problems. We observe that LLMs may not be good at problems which is not in the training distribution.
+              </p>
+              <img src="./static/images/logo_handdrawing_examples.png" width="100%"/>
+            <div class="content has-text-justified" style="font-size: 70%;">
+              <p>
+                An example of very out-of-distribution problems: hand-drawn examples of LOGO programs.
+              </p>
+              </div>
+              <p>
+                We propose a simple adaptation method to improve the performance on out-of-distribution problems. We find that by using the problems that  from the target distribution, we can adapt the model to perform well on out-of-distribution problems without manual annotation.
+              </p>
+              <img src="./static/images/adaptation_results.png" width="100%"/>
+            <div class="content has-text-justified" style="font-size: 70%;">
+              <p>
+                Adaptation results on three domains. The x-axis is the number of samples used. The y-axis is the performance on out-of-distribution problems. The curve marked as "Before Adaptation" is the performance of the model before adaptation and shows a domain gap compare to models trained on in-distribution problems. The curve marked as "After Adaptation" is the performance of the model after adaptation and shows that we can close the domain
+              </p>
+              </div>
+            </div>
+          </div>
+        </div>
+    </section>
+
+
+  </div>
+</section>
+
+
+
+<section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+    <pre><code>@misc{li2024programmingexamplesolvedllms,
+      title={Is Programming by Example solved by LLMs?}, 
+      author={Wen-Ding Li and Kevin Ellis},
+      year={2024},
+      eprint={2406.08316},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL},
+      url={https://arxiv.org/abs/2406.08316}, 
+}
+</code></pre>
+  </div>
+</section>
+
+
+<footer class="footer">
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-8">
+        <div class="content">
+          <p>
+            The source code for this website is borrowed from this <a
+              href="https://github.com/nerfies/nerfies.github.io">template</a>.
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
